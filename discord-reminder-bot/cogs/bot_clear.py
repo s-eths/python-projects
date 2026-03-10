@@ -7,6 +7,8 @@ class bot_clear(commands.Cog):
         self.bot = bot
 
     @app_commands.command(name = "bot_clear", description = "Delete all messages sent by the bot in this DM")
+    @app_commands.allowed_contexts(guilds = True, dms = True, private_channels = True)
+    @app_commands.user_install()
     async def clear_bot_messages(self, interaction: discord.Interaction):
         await interaction.response.defer(ephemeral = True)
 

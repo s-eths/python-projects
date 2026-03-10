@@ -20,6 +20,8 @@ class reminders(commands.Cog):
         self.bot = bot
 
     @app_commands.command(name = "reminders", description = "Show all your current reminders")
+    @app_commands.allowed_contexts(guilds = True, dms = True, private_channels = True)
+    @app_commands.user_install()
     async def reminders(self, interaction: discord.Interaction):
         await interaction.response.defer(ephemeral = True)
         data = load_data()

@@ -27,6 +27,8 @@ class timezone_set(commands.Cog):
         self.bot = bot
 
     @app_commands.command(name = "timezone_set", description = "Set your timezone (Example: UTC+11, UTC-5, UTC+10:30)")
+    @app_commands.allowed_contexts(guilds = True, dms = True, private_channels = True)
+    @app_commands.user_install()
     async def timezone_set(self, interaction: discord.Interaction, utc_offset: str):
         if parse_utc_offset(utc_offset) is None:
             await interaction.response.send_message(embed = discord.Embed(description = f"❌ ‎ Invalid timezone format.\n\nExamples: `UTC+11`, `UTC-5`, `UTC+10:30`"), ephemeral = True)

@@ -19,6 +19,8 @@ class remove_reminder(commands.Cog):
 
     @app_commands.command(name = "remove_reminder", description = "Remove a reminder by its ID")
     @app_commands.describe(reminder_id = "The ID of the reminder you want to remove")
+    @app_commands.allowed_contexts(guilds = True, dms = True, private_channels = True)
+    @app_commands.user_install()
     async def remove_reminder(self, interaction: discord.Interaction, reminder_id: str):
         await interaction.response.defer(ephemeral = True)
         data = load_data()

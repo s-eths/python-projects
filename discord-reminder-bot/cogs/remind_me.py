@@ -39,6 +39,8 @@ class remind_me(commands.Cog):
 
     @app_commands.command(name = "remind_me", description = "Set a reminder")
     @app_commands.describe(duration = "Time until reminder (e.g., 30m, 2h)", message = "What to remind you about.")
+    @app_commands.allowed_contexts(guilds = True, dms = True, private_channels = True)
+    @app_commands.user_install()
     async def remind_me(self, interaction: discord.Interaction, duration: str, message: str):
         await interaction.response.defer(ephemeral = True)
 

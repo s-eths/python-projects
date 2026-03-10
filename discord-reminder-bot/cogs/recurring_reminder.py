@@ -43,6 +43,8 @@ class recurring_reminder(commands.Cog):
 
     @app_commands.command(name = "recurring_reminder", description = "Set a recurring reminder at a specific date/time with an interval")
     @app_commands.describe(datetime_str = "Date and time (DD-MM-YYYY HH:MM AM/PM)", interval = "Recurring interval (e.g., 1d, 2h, 30m)", message = "What to remind you about")
+    @app_commands.allowed_contexts(guilds = True, dms = True, private_channels = True)
+    @app_commands.user_install()
     async def recurring_reminder(self, interaction: discord.Interaction, datetime_str: str, interval: str, message: str):
         await interaction.response.defer(ephemeral = True)
 

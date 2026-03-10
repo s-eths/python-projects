@@ -37,6 +37,8 @@ class reminder(commands.Cog):
 
     @app_commands.command(name = "reminder", description = "Set a reminder for a specific date/time")
     @app_commands.describe(datetime_str = "Date and time (DD-MM-YYYY HH:MM AM/PM)", message = "What to remind you about")
+    @app_commands.allowed_contexts(guilds = True, dms = True, private_channels = True)
+    @app_commands.user_install()
     async def reminder(self, interaction: discord.Interaction, datetime_str: str, message: str):
         await interaction.response.defer(ephemeral = True)
 

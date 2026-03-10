@@ -13,6 +13,8 @@ class timezone(commands.Cog):
         self.bot = bot
 
     @app_commands.command(name = "timezone", description = "View your currently set timezone")
+    @app_commands.allowed_contexts(guilds = True, dms = True, private_channels = True)
+    @app_commands.user_install()
     async def timezone(self, interaction: discord.Interaction):
         data = load_data()
 
